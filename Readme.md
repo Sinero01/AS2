@@ -6,7 +6,7 @@ Este documento describe el acceso, arquitectura de inferencia e instrucciones de
 
 La aplicación se encuentra activa y accesible de forma pública a través del siguiente enlace (alojada en *Modal*):
 
-[**URL:**](`https://alex-cisnerosap--prediccion-de-permanecia-clientes-fastapi-app.us-east.modal.run`)
+[**URL:**](https://alex-cisnerosap--prediccion-de-permanecia-clientes-fastapi-app.us-east.modal.run)`https://alex-cisnerosap--prediccion-de-permanecia-clientes-fastapi-app.us-east.modal.run`
 
 **Nota sobre tiempos de carga:**  Segun accedas a la url deberas esperar un breve tiempo para que funcione correctamente
 
@@ -16,8 +16,8 @@ El sistema permite evaluar el riesgo de fuga de clientes bancarios tanto desde s
 
 ### A. Probar la Interfaz Web (`/`)
 
-1. Abre tu navegador y accede a la ruta raíz de la aplicación:
-   `https://tu-usuario--prediccion-de-permanecia-clientes-fastapi-app.modal.run/`
+1. Abre tu navegador y accede a la ruta raíz de la aplicación: [Ruta raiz:](https://alex-cisnerosap--prediccion-de-permanecia-clientes-fastapi-app.us-east.modal.run)
+   `https://alex-cisnerosap--prediccion-de-permanecia-clientes-fastapi-app.us-east.modal.run/`
 2. Visualizarás el formulario web interactivo del gestor bancario (`templates/index.html`).
 3. Rellena los datos del cliente respetando los valores admitidos:
    * **Identificador (`id_cliente`):** Texto entre 1 y 30 caracteres (ej. `CLI-1042`).
@@ -38,8 +38,8 @@ El sistema permite evaluar el riesgo de fuga de clientes bancarios tanto desde s
 
 La API expone una interfaz **Swagger UI** autogenerada por FastAPI para realizar pruebas directas contra el endpoint de inferencia:
 
-1. Accede a la ruta `/docs`:
-   `https://tu-usuario--prediccion-de-permanecia-clientes-fastapi-app.modal.run/docs`
+1. Accede a la ruta `/docs`: [Ruta docs:](https://alex-cisnerosap--prediccion-de-permanecia-clientes-fastapi-app.us-east.modal.run/docs)
+   `https://alex-cisnerosap--prediccion-de-permanecia-clientes-fastapi-app.us-east.modal.run/docs`
 2. Despliega el endpoint **`POST /predict`** (sección *Inferencia*) y haz clic en **"Try it out"**.
 3. Introduce un JSON válido en el campo `Request body` siguiendo el esquema `ClienteInput`. Puedes utilizar este ejemplo listo para probar:
 
@@ -65,9 +65,9 @@ La API expone una interfaz **Swagger UI** autogenerada por FastAPI para realizar
    {
      "id_cliente": "CLI-98765",
      "abandono": 0,
-     "probabilidad_abandono": 0.2,
-     "nivel_riesgo": "Bajo",
-     "accion_recomendada": "Sin acción requerida. Cliente fidelizado."
+     "probabilidad_abandono": 0.4,
+     "nivel_riesgo": "Medio",
+     "accion_recomendada": "Envío de encuesta de satisfacción y campaña informativa sobre ventajas en comisiones."
    }
    ```
 
@@ -77,6 +77,4 @@ La API expone una interfaz **Swagger UI** autogenerada por FastAPI para realizar
 
 A continuación se muestra una captura de pantalla de la interfaz web en producción ejecutando una inferencia real sobre un perfil de cliente:
 
-![Captura de pantalla de la interfaz web en producción](ruta/a/tu/captura_inferencia.png)
-
-*(Recuerda guardar tu captura de pantalla dentro de una carpeta como `static/` o `assets/` en el repositorio y actualizar el enlace de la imagen).*
+![Captura de pantalla de la interfaz web en producción](static/image.png)
