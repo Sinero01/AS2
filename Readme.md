@@ -40,7 +40,7 @@ La API expone una interfaz **Swagger UI** autogenerada por FastAPI para realizar
 
 1. Accede a la ruta `/docs`: [Ruta docs:](https://alex-cisnerosap--prediccion-de-permanecia-clientes-fastapi-app.us-east.modal.run/docs)
    `https://alex-cisnerosap--prediccion-de-permanecia-clientes-fastapi-app.us-east.modal.run/docs`
-2. Despliega el endpoint **`POST /predict`** (sección *Inferencia*) y haz clic en **"Try it out"**.
+2. Despliega el endpoint **`POST /predict`** y haz clic en **"Try it out"**.
 3. Introduce un JSON válido en el campo `Request body` siguiendo el esquema `ClienteInput`. Puedes utilizar este ejemplo listo para probar:
 
    ```json
