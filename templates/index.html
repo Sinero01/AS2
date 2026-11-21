@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Riesgo de Abandono - Banca</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Portal del Gestor Bancario</h1>
+        <p>Sistema predictivo de retención y fuga de clientes (Churn)</p>
+    </header>
+
+    <main class="container">
+        <!-- Tarjeta del Formulario -->
+        <section class="card">
+            <h2>Datos del Cliente</h2>
+            <form id="churn-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="id_cliente">ID Cliente</label>
+                        <input type="text" id="id_cliente" name="id_cliente" value="CLI-8492" required maxlength="30">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edad">Edad (años)</label>
+                        <input type="number" id="edad" name="edad" value="42" min="1" max="120" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ingresos_anuales">Ingresos Anuales (€)</label>
+                        <input type="number" id="ingresos_anuales" name="ingresos_anuales" value="48000" min="1" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="saldo_cuenta">Saldo en Cuenta (€)</label>
+                        <input type="number" id="saldo_cuenta" name="saldo_cuenta" value="14200" min="0" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="num_productos">Productos Contratados</label>
+                        <select id="num_productos" name="num_productos" required>
+                            <option value="1">1 producto</option>
+                            <option value="2" selected>2 productos</option>
+                            <option value="3">3 productos</option>
+                            <option value="4">4 productos</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="antiguedad_meses">Antigüedad (meses)</label>
+                        <input type="number" id="antiguedad_meses" name="antiguedad_meses" value="60" min="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tiene_tarjeta">¿Tiene Tarjeta de Crédito?</label>
+                        <select id="tiene_tarjeta" name="tiene_tarjeta" required>
+                            <option value="1" selected>Sí (1)</option>
+                            <option value="0">No (0)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipo_cuenta">Tipo de Cuenta</label>
+                        <select id="tipo_cuenta" name="tipo_cuenta" required>
+                            <option value="Corriente">Corriente</option>
+                            <option value="Ahorro" selected>Ahorro</option>
+                            <option value="Nomina">Nómina</option>
+                            <option value="Inversion">Inversión</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="canal_preferido">Canal Preferido</label>
+                        <select id="canal_preferido" name="canal_preferido" required>
+                            <option value="App Movil" selected>App Móvil</option>
+                            <option value="Web">Web</option>
+                            <option value="Oficina">Oficina</option>
+                            <option value="Telefono">Teléfono</option>
+                            <option value="Cajero Antiguo">Cajero Antiguo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nivel_estudios">Nivel de Estudios</label>
+                        <select id="nivel_estudios" name="nivel_estudios" required>
+                            <option value="Primaria">Primaria</option>
+                            <option value="Secundaria">Secundaria</option>
+                            <option value="Grado" selected>Grado</option>
+                            <option value="Master">Máster</option>
+                            <option value="Doctorado">Doctorado</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nivel_satisfaccion">Nivel de Satisfacción</label>
+                        <select id="nivel_satisfaccion" name="nivel_satisfaccion" required>
+                            <option value="Muy Bajo">Muy Bajo</option>
+                            <option value="Bajo">Bajo</option>
+                            <option value="Medio">Medio</option>
+                            <option value="Alto" selected>Alto</option>
+                            <option value="Muy Alto">Muy Alto</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" id="btn-calcular" class="btn-primary">Calcular Riesgo</button>
+            </form>
+        </section>
+
+        <!-- Tarjeta de Resultados -->
+        <section id="resultado-card" class="card resultado-card hidden">
+            <h2>Diagnóstico de Retención</h2>
+            
+            <div class="res-header">
+                <div>
+                    <span class="label-mini">Cliente analizado</span>
+                    <h3 id="res-id">---</h3>
+                </div>
+                <span id="res-badge" class="badge">---</span>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <span class="label-mini">Predicción del Modelo</span>
+                    <strong id="res-veredicto">---</strong>
+                </div>
+                <div class="metric-box">
+                    <span class="label-mini">Probabilidad de Abandono</span>
+                    <strong id="res-probabilidad">---</strong>
+                </div>
+            </div>
+
+            <div class="progress-bar-bg">
+                <div id="res-barra" class="progress-bar-fill"></div>
+            </div>
+
+            <div class="accion-box">
+                <span class="label-mini">Acción Comercial Recomendada</span>
+                <p id="res-accion">---</p>
+            </div>
+        </section>
+
+        <!-- Mensaje de error -->
+        <div id="error-box" class="error-box hidden"></div>
+    </main>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
